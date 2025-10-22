@@ -3,7 +3,7 @@ import ActionController from "../controllers/action.controller";
 const router = Router();
 
 
-router.get('/status', ActionController.getStatus);
+router.get('/balance', ActionController.getBalance);
 
 router.post('/insert-coin', ActionController.insertCoin);
 router.post('/select-product', ActionController.selectProduct);
