@@ -1,0 +1,65 @@
+export class VendingMachine {
+    private products: { [name: string]: { price: number; quantity: number } };
+    private acceptedCoins: number[];
+    public currentBalance: number;
+
+    constructor() {
+        this.products = {
+            coke: { price: 1.50, quantity: 5 },
+            pepsi: { price: 1.45, quantity: 5 },
+            water: { price: 0.90, quantity: 5 },
+        };
+        this.acceptedCoins = [0.05, 0.10, 0.20, 0.50, 1, 2];
+        this.currentBalance = 0;
+    }
+
+    insertCoin(coin: number): string {
+        if (this.acceptedCoins.includes(coin)) {
+            this.currentBalance += coin;
+            return `Inserted ${coin.toFixed(2)}. Current balance: ${this.currentBalance.toFixed(2)}`;
+        } else {
+            return "Invalid coin. Please insert a valid coin.";
+        }
+    }
+
+    selectProduct(productName: string): string {
+        productName = productName.toLowerCase();
+        if (!this.products[productName]) {
+            return "Invalid product.";
+        }
+
+        const product = this.products[productName];
+        if (product.quantity <= 0) {
+            return `${productName.charAt(0).toUpperCase() + productName.slice(1)} is out of stock.`;
+        }
+
+        if (this.currentBalance < product.price) {
+            return `Insufficient balance. Please insert more coins. Price: ${product.price.toFixed(2)}, Balance: ${this.currentBalance.toFixed(2)}`;
+        }
+
+        const change = this.currentBalance - product.price;
+        product.quantity--;
+        this.currentBalance = 0;
+        return `Dispensing ${productName.charAt(0).toUpperCase() + productName.slice(1)}. Your change is ${change.toFixed(2)}`;
+    }
+
+    cancel(): string {
+        const refund = this.currentBalance;
+        this.currentBalance = 0;
+        return `Request cancelled. Refunding ${refund.toFixed(2)}`;
+    }
+
+    reset(): string {
+        this.products = {
+            coke: { price: 1.50, quantity: 5 },
+            pepsi: { price: 1.45, quantity: 5 },
+            water: { price: 0.90, quantity: 5 },
+        };
+        this.currentBalance = 0;
+        return "Vending machine has been reset.";
+    }
+
+    getProducts() {
+        return this.products;
+    }
+}
