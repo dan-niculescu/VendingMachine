@@ -1,4 +1,4 @@
-export class VendingMachine {
+class VendingMachine {
     private products: { [name: string]: { price: number; quantity: number } };
     private acceptedCoins: number[];
     public currentBalance: number;
@@ -63,3 +63,5 @@ export class VendingMachine {
         return this.products;
     }
 }
+
+export const vendingMachine = new VendingMachine();

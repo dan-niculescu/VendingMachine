@@ -1,5 +1,5 @@
 import { Router } from "express";
-import maintenanceRoute from './routes/maintenance';
+import maintenanceRoute from './routes/maintenance.route';
 const routerV1 = Router();
 
 routerV1.get('/', (req, res) => {
