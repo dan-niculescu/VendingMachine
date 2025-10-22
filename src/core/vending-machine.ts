@@ -5,16 +5,12 @@ function getRandomInt(min: number, max: number): number {
 }
 
 export class VendingMachine {
-    private products: { [name: string]: { price: number; quantity: number } };
+    private products: Record <string, Product>;
     private acceptedCoins: number[];
     public currentBalance: number;
 
     constructor() {
-        this.products = {
-            coke: { price: 1.50, quantity: getRandomInt(5, 30) },
-            pepsi: { price: 1.45, quantity: getRandomInt(5, 30) },
-            water: { price: 0.90, quantity: getRandomInt(5, 30) },
-        };
+        this.products = this.initProducts();
         this.acceptedCoins = [0.05, 0.10, 0.20, 0.50, 1, 2];
         this.currentBalance = 0;
     }
@@ -56,17 +52,21 @@ export class VendingMachine {
     }
 
     reset(): string {
-        this.products = {
-            coke: { price: 1.50, quantity: getRandomInt(5, 30) },
-            pepsi: { price: 1.45, quantity: getRandomInt(5, 30) },
-            water: { price: 0.90, quantity: getRandomInt(5, 30) },
-        };
+        this.products = this.initProducts();
         this.currentBalance = 0;
         return "Vending machine has been reset.";
     }
 
     getProducts() {
         return this.products;
+    }
+
+    initProducts() {
+        return {
+            coke: { price: 1.50, quantity: getRandomInt(5, 30) },
+            pepsi: { price: 1.45, quantity: getRandomInt(5, 30) },
+            water: { price: 0.90, quantity: getRandomInt(5, 30) },
+        };
     }
 }
 
