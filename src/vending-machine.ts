@@ -4,7 +4,7 @@ function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-class VendingMachine {
+export class VendingMachine {
     private products: { [name: string]: { price: number; quantity: number } };
     private acceptedCoins: number[];
     public currentBalance: number;
