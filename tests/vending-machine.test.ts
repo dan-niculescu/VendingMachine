@@ -1,4 +1,4 @@
-import { VendingMachine } from '../src/vending-machine';
+import { VendingMachine } from '../src/core/vending-machine';
 
 describe('VendingMachine', () => {
     let vendingMachine: VendingMachine;

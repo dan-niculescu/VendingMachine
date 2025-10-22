@@ -9,9 +9,6 @@ instance.use(express.json());
 
 // init routes
 instance.use('/api/v1', routerV1);
-instance.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 // Create HTTP server
 const server = createServer(instance);

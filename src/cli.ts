@@ -1,4 +1,4 @@
-import { vendingMachine } from './vending-machine';
+import { vendingMachine } from './core/vending-machine';
 import * as readline from 'readline';
 
 const rl = readline.createInterface({

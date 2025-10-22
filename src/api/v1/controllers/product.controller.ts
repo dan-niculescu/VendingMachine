@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { vendingMachine } from '../../../vending-machine';
+import { vendingMachine } from '../../../core/vending-machine';
 
 export default class ProductController {
 
