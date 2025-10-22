@@ -1,6 +1,5 @@
-import { VendingMachine } from './vending-machine';
+import { vendingMachine } from './vending-machine';
 
-const vm = new VendingMachine();
 
 function displayHelp() {
     console.log("\n--- Vending Machine CLI ---");
@@ -21,14 +20,14 @@ function main() {
 
     switch (command) {
         case "products":
-            console.log(vm.getProducts());
+            console.log(vendingMachine.getProducts());
             break;
         case "insert":
             const coin = parseFloat(args[1]);
             if (isNaN(coin)) {
                 console.log("Invalid coin value.");
             } else {
-                console.log(vm.insertCoin(coin));
+                console.log(vendingMachine.insertCoin(coin));
             }
             break;
         case "select":
@@ -36,17 +35,17 @@ function main() {
             if (!product) {
                 console.log("Please specify a product.");
             } else {
-                console.log(vm.selectProduct(product));
+                console.log(vendingMachine.selectProduct(product));
             }
             break;
         case "cancel":
-            console.log(vm.cancel());
+            console.log(vendingMachine.cancel());
             break;
         case "reset":
-            console.log(vm.reset());
+            console.log(vendingMachine.reset());
             break;
         case "balance":
-            console.log(`Current balance: ${vm.currentBalance.toFixed(2)}`);
+            console.log(`Current balance: ${vendingMachine.currentBalance.toFixed(2)}`);
             break;
         case "exit":
             console.log("Exiting...");
