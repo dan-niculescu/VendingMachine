@@ -56,6 +56,8 @@ function executeCommand(commandLine: string) {
             console.log("Exiting...");
             rl.close();
             process.exit(0);
+
+        // for anything else
         default:
             displayHelp();
             break;

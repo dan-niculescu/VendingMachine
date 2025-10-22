@@ -22,11 +22,10 @@ export class TransactionManager {
 
         this.inventoryManager.decrementProduct(productName);
         const changeAmount = +(balance - product.price).toFixed(2);
-        const changeCoins = this.coinHandler.calculateChange(changeAmount);
 
         this.coinHandler.resetBalance();
 
-        return `Dispensing ${productName}. Change: ${changeCoins.join(", ") || "0.00"}`;
+        return `Dispensing ${productName}. Your change is ${changeAmount.toFixed(2)}`;
     }
 
     cancel(): string {
