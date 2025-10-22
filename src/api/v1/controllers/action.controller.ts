@@ -26,7 +26,7 @@ export default class ActionController {
         res.send(message);
     }
 
-    public static getStatus(req: Request, res: Response) {
+    public static getBalance(req: Request, res: Response) {
         res.json({
         products: vendingMachine.getProducts(),
         currentBalance: vendingMachine.currentBalance
