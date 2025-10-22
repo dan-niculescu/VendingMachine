@@ -1,5 +1,10 @@
 import { vendingMachine } from './vending-machine';
+import * as readline from 'readline';
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 function displayHelp() {
     console.log("\n--- Vending Machine CLI ---");
@@ -14,8 +19,8 @@ function displayHelp() {
     console.log("---------------------------");
 }
 
-function main() {
-    const args = process.argv.slice(2);
+function executeCommand(commandLine: string) {
+    const args = commandLine.split(' ').filter(arg => arg.length > 0);
     const command = args[0];
 
     switch (command) {
@@ -25,7 +30,7 @@ function main() {
         case "insert":
             const coin = parseFloat(args[1]);
             if (isNaN(coin)) {
-                console.log("Invalid coin value.");
+                console.log("Invalid coin value. Please provide a number (e.g., insert 0.50)");
             } else {
                 console.log(vendingMachine.insertCoin(coin));
             }
@@ -33,7 +38,7 @@ function main() {
         case "select":
             const product = args[1];
             if (!product) {
-                console.log("Please specify a product.");
+                console.log("Please specify a product (e.g., select coke)");
             } else {
                 console.log(vendingMachine.selectProduct(product));
             }
@@ -49,6 +54,7 @@ function main() {
             break;
         case "exit":
             console.log("Exiting...");
+            rl.close();
             process.exit(0);
         default:
             displayHelp();
@@ -56,4 +62,12 @@ function main() {
     }
 }
 
-main();
+function askQuestion() {
+    rl.question('Enter command: ', (answer) => {
+        executeCommand(answer);
+        askQuestion(); // Ask again
+    });
+}
+
+displayHelp();
+askQuestion();
