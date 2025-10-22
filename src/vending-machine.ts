@@ -1,3 +1,9 @@
+function getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class VendingMachine {
     private products: { [name: string]: { price: number; quantity: number } };
     private acceptedCoins: number[];
@@ -5,9 +11,9 @@ class VendingMachine {
 
     constructor() {
         this.products = {
-            coke: { price: 1.50, quantity: 5 },
-            pepsi: { price: 1.45, quantity: 5 },
-            water: { price: 0.90, quantity: 5 },
+            coke: { price: 1.50, quantity: getRandomInt(5, 30) },
+            pepsi: { price: 1.45, quantity: getRandomInt(5, 30) },
+            water: { price: 0.90, quantity: getRandomInt(5, 30) },
         };
         this.acceptedCoins = [0.05, 0.10, 0.20, 0.50, 1, 2];
         this.currentBalance = 0;
@@ -51,9 +57,9 @@ class VendingMachine {
 
     reset(): string {
         this.products = {
-            coke: { price: 1.50, quantity: 5 },
-            pepsi: { price: 1.45, quantity: 5 },
-            water: { price: 0.90, quantity: 5 },
+            coke: { price: 1.50, quantity: getRandomInt(5, 30) },
+            pepsi: { price: 1.45, quantity: getRandomInt(5, 30) },
+            water: { price: 0.90, quantity: getRandomInt(5, 30) },
         };
         this.currentBalance = 0;
         return "Vending machine has been reset.";
