@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "ts-node src/api.ts",
-    "dev": "nodemon --watch src --exec ts-node src/api.ts",
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
     "cli": "ts-node src/cli.ts",
     "test": "jest"
   },

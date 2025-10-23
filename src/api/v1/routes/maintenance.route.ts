@@ -2,6 +2,6 @@ import { Router } from "express";
 import MaintenanceController from '../controllers/maintenance.controller';
 const router = Router();
 
-router.get('/reset', MaintenanceController.resetVendingMachine);
+router.delete('/reset', MaintenanceController.resetVendingMachine);
 
 export default router;
